@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class UserProfileController extends Controller
 {
@@ -66,17 +67,13 @@ class UserProfileController extends Controller
     }
 
     if ($request->hasFile('image')) {
-        // Handle file upload without Storage facade
+        // Handle file upload using Storage facade
         $uploadedImage = $request->file('image');
-        $filename = basename($uploadedImage->store('uploads/user', 'public'));
+        $filename = basename($uploadedImage->store('uploads/users', 'public'));
 
         // Delete old image if it exists
         if ($user->image) {
-            // Assuming 'public/uploads/user/' is the directory where images are stored
-            $path = public_path('uploads/user/' . $user->image);
-            if (file_exists($path)) {
-                unlink($path);
-            }
+            Storage::disk('public')->delete('uploads/users/' . $user->image);
         }
 
         $user->image = $filename;

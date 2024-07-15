@@ -69,10 +69,10 @@
                                     <a href="{{ route('dashboard.user.index') }}" class="sidebar-link">
                                         <i class="fas fa-user"></i>users</a>
                                 </li>
-                                {{-- <li>
-                                    <a href="{{ route('dashboard.userdata.index') }}" class="sidebar-link">
-                                        <i class="fas fa-clipboard-list"></i>user data</a>
-                                </li> --}}
+                                <li>
+                                    <a href="{{ url('logout') }}" class="sidebar-link">
+                                        <i class="fas fa-sign-out"></i>logout</a>
+                                </li>
 
                         </ul>
                     </nav>

@@ -33,7 +33,7 @@
                             <td>{{$user->email }}</td>
                             <td>{{$user->role }}</td>
                             <td>
-                                <img class="card-img-top" src="{{ asset('Uploads/User/') }}/{{ $user->image }}" style="width:100px;height:100px;">
+                                <img class="card-img-top" src="{{ asset('storage/uploads/users/') }}/{{ $user->image }}" style="width:100px;height:100px;">
                             </td>
                             <td>
                                <div class="table-data-feature">

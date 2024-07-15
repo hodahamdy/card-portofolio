@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('user_data', function (Blueprint $table) {
             $table->id();
-            $table->string('phone_number');
-            $table->longText('data');
-            $table->string('whatsapp');
+            $table->string('phone_number')->nullable();
+            $table->longText('data')->nullable();
+            $table->string('whatsapp')->nullable();
             $table->string('facebook')->nullable();
             $table->string('tiktok')->nullable();
             $table->string('youtube')->nullable();

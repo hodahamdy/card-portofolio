@@ -80,19 +80,27 @@ p {
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
+
     <div class="card">
-        <img src="{{ asset('uploads/user/' . $user->image) }}" alt="User Image" class="profile-img">
+       @auth
+
+        @if (Auth::user()->role=='admin')
+         <a href="{{ route('dashboard.user.index') }}" class="btn btn-primary">Dashboard </a>
+        @endif
+       @endauth
+        <img src="{{ asset('storage/uploads/users/' . $user->image) }}" alt="User Image" class="profile-img">
         <h2>{{ $user->name_en }}</h2>
         <div class="contact-buttons">
-            <a href="https://wa.me/{{ $user->userData->whatsapp }}" class="whatsapp-btn">WhatsApp</a>
-            <a href="tel:{{ $user->userData->phone_number }}" class="call-btn">Call Me</a>
+            <a href="https://wa.me/{{ @$user->userData->whatsapp }}" class="whatsapp-btn">WhatsApp</a>
+            <a href="tel:{{ @$user->userData->phone_number }}" class="call-btn">Call Me</a>
         </div>
-        <p>{!! $user->userData->data !!}</p>
+        <p>{!! @$user->userData->data !!}</p>
         <div class="social-icons">
-            <a href="{{ $user->userData->facebook }}"><img src="https://www.svgrepo.com/show/333535/facebook-circle.svg" alt="Facebook"></a>
-            <a href="{{ $user->userData->instagram }}"><img src="https://www.svgrepo.com/show/333555/instagram-alt.svg" alt="Instagram"></a>
-            <a href="{{ $user->userData->tiktok }}"><img src="https://www.svgrepo.com/show/333611/tiktok.svg" alt="TikTok"></a>
-            <a href="{{ $user->userData->youtube }}"><img src="https://www.svgrepo.com/show/333494/youtube.svg" alt="YouTube"></a>
+            <a href="{{ @$user->userData->facebook }}"><img src="https://www.svgrepo.com/show/333535/facebook-circle.svg" alt="Facebook"></a>
+            <a href="{{ @$user->userData->instagram }}"><img src="https://www.svgrepo.com/show/333555/instagram-alt.svg" alt="Instagram"></a>
+            <a href="{{ @$user->userData->tiktok }}"><img src="https://www.svgrepo.com/show/333611/tiktok.svg" alt="TikTok"></a>
+            <a href="{{ @$user->userData->youtube }}"><img src="https://www.svgrepo.com/show/333494/youtube.svg" alt="YouTube"></a>
             <a href="{{ route('userprofile.edit', ['name' => $user->name_en]) }}" class="btn btn-primary">Edit</a>
 
         </div>

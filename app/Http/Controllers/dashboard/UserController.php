@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Validation\Validator;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -48,8 +49,8 @@ class UserController extends Controller
          $extension = $file->getClientOriginalExtension();
          $fileName = $validated['name_en'] . uniqid() . ".$extension";
 
-         // Move the file to its folder
-         $file->move(public_path('Uploads/User'), $fileName);
+         // Save the file in storage/app/public/uploads/users
+        $file->storeAs('public/uploads/users', $fileName);
 
         $user = User::create([
 
@@ -80,7 +81,7 @@ class UserController extends Controller
     {
         if( $id->image !== null )
         {
-            unlink( public_path('Uploads/User/') . $id->image );
+            Storage::delete('public/uploads/users/' . $id->image);
         }
         $id->userData->delete();
         $id->delete();

@@ -5,15 +5,15 @@
         @csrf
         <div class="mb-3">
             <label for="name_en" class="form-label">Name (EN):</label>
-            <input type="text" class="form-control" name="name_en" id="name_en" value="{{ $user->name_en }}" required>
+            <input type="text" class="form-control" name="name_en" id="name_en" value="{{ @$user->name_en }}" required>
         </div>
         <div class="mb-3">
             <label for="name_ar" class="form-label">Name (Ar):</label>
-            <input type="text" class="form-control" name="name_ar" id="name_ar" value="{{ $user->name_ar }}" >
+            <input type="text" class="form-control" name="name_ar" id="name_ar" value="{{ @$user->name_ar }}" >
         </div>
         <div class="mb-3">
             <label for="email" class="form-label">Email:</label>
-            <input type="text" class="form-control" name="email" id="email" value="{{ $user->email }}" >
+            <input type="text" class="form-control" name="email" id="email" value="{{ @$user->email }}" >
         </div>
         <div class="mb-3">
             <label for="password" class="form-label">Password :</label>
@@ -22,51 +22,51 @@
 
         <div class="mb-3">
             <label for="phone_number" class="form-label">Phone Number :</label>
-            <input type="text" class="form-control" name="phone_number" id="phone_number" value="{{ $user->userData->phone_number }}" >
+            <input type="text" class="form-control" name="phone_number" id="phone_number" value="{{ @$user->userData->phone_number }}" >
         </div>
         <div class="mb-3">
             <label for="whatsapp" class="form-label">WhatsApp :</label>
-            <input type="text" class="form-control" name="whatsapp" id="whatsapp" value="{{ $user->userData->whtasapp }}" required >
+            <input type="text" class="form-control" name="whatsapp" id="whatsapp" value="{{ @$user->userData->whtasapp }}" required >
         </div>
         <div class="mb-3">
             <label for="instagram" class="form-label">Instagram :</label>
-            <input type="text" class="form-control" name="instagram" id="instagram" value="{{ $user->userData->instagram }}" >
+            <input type="text" class="form-control" name="instagram" id="instagram" value="{{ @$user->userData->instagram }}" >
         </div>
         <div class="mb-3">
             <label for="snapchat" class="form-label">SnapChat :</label>
-            <input type="text" class="form-control" name="snapchat" id="snapchat" value="{{ $user->userData->snapchat }}" >
+            <input type="text" class="form-control" name="snapchat" id="snapchat" value="{{ @$user->userData->snapchat }}" >
         </div>
         <div class="mb-3">
             <label for="telegram" class="form-label">Telegram :</label>
-            <input type="text" class="form-control" name="telegram" id="telegram" value="{{ $user->userData->telegram }}" >
+            <input type="text" class="form-control" name="telegram" id="telegram" value="{{ @$user->userData->telegram }}" >
         </div>
         <div class="mb-3">
             <label for="facebook" class="form-label">Facebook :</label>
-            <input type="text" class="form-control" name="facebook" id="facebook" value="{{ $user->userData->facebook }}" >
+            <input type="text" class="form-control" name="facebook" id="facebook" value="{{ @$user->userData->facebook }}" >
         </div>
         <div class="mb-3">
             <label for="tiktok" class="form-label">TikTok :</label>
-            <input type="text" class="form-control" name="tiktok" id="tiktok" value="{{ $user->userData->tiktok }}" >
+            <input type="text" class="form-control" name="tiktok" id="tiktok" value="{{ @$user->userData->tiktok }}" >
         </div>
         <div class="mb-3">
             <label for="twitter" class="form-label">Twitter :</label>
-            <input type="text" class="form-control" name="twitter" id="twitter" value="{{ $user->userData->twitter }}" >
+            <input type="text" class="form-control" name="twitter" id="twitter" value="{{ @$user->userData->twitter }}" >
         </div>
         <div class="mb-3">
             <label for="Youtube" class="form-label">YouTube :</label>
-            <input type="text" class="form-control" name="Youtube" id="Youtube" value="{{ $user->userData->Youtube }}" >
+            <input type="text" class="form-control" name="Youtube" id="Youtube" value="{{ @$user->userData->Youtube }}" >
         </div>
 
         <div class="mb-3">
             <label for="exampleFormControlTextarea1" class="form-label">Additional Data :</label>
-            <textarea class="ckeditor form-control" id="exampleFormControlTextarea1"  name="data" rows="3">{!! $user->userData->data !!}</textarea>
+            <textarea class="ckeditor form-control" id="exampleFormControlTextarea1"  name="data" rows="3">{!! @$user->userData->data !!}</textarea>
           </div>
         <div>
             <div>
                 <label for="image">Image:</label>
                 <input type="file" id="image" name="image">
                 @if ($user->image)
-                    <img src="{{ asset('uploads/user/' . $user->image) }}" alt="{{ $user->name_en }}" width="200px" height="200px" class="profile-img">
+                    <img src="{{ asset('storage/uploads/users/' . $user->image) }}" alt="{{ $user->name_en }}" width="200px" height="200px" class="profile-img">
                 @endif
             </div>
             <button type="submit">Update</button>
